@@ -5,11 +5,12 @@ module PrestashopLibrary
 	
 	def prestashop_fetchrelease()
 	    remote_file "/tmp/prestashop152.zip" do
-  		source "http://www.prestashop.com/download/old/prestashop_1.5.2.0.zip"
-    	mode "0644"
-      	checksum "37aee9ef5388376e4377aeb240ab027e"
-      	backup false
-      	not_if "test -f /tmp/prestashop152.zip"
+	  		source "http://www.prestashop.com/download/old/prestashop_1.5.2.0.zip"
+	    	mode "0644"
+	      	checksum "37aee9ef5388376e4377aeb240ab027e"
+	      	backup false
+	      	not_if "test -f /tmp/prestashop152.zip"
+	    end
 	end
 
 	def prestashop_deploy(username) 
