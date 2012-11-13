@@ -34,7 +34,7 @@ module PrestashopLibrary
 		end
 
 		template "/var/www/#{username}/prestashop/config/settings.inc.php" do
-			source "settings.inc.php"
+			source "settings.inc.php.erb"
 			owner "www-data"
 			group "www-data"
 			mode "0600"
