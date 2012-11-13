@@ -25,8 +25,8 @@ node["prestashop_sites"].each do |key, site|
 	prestashop_fetchrelease()
 
 	# Deploy site
-	prestashop_deploysite "#{site['username']}"
-	
+	prestashop_deploySite "#{site['username']}"
+
 	# Deploy Database
 	prestashop_deployDatabase "#{site['username']}"
 	
