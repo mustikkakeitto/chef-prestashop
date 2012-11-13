@@ -48,7 +48,7 @@ module PrestashopLibrary
 		end
 
 		execute "prestashop-create-tables" do
-  			command "\"#{node['mysql']['mysql_bin']}\" -u root #{node['mysql']['server_root_password'].empty? ? '' : '-p' }\"#{node['mysql']['server_root_password']}\" < \"#{sql_path}\""
+  			command "\"#{node['mysql']['mysql_bin']}\" -u root #{node['mysql']['server_root_password'].empty? ? '' : '-p' }\"#{node['mysql']['server_root_password']}\" #{username}_prestashop < \"#{sql_path}\""
 		end
 
 		file sql_path do
