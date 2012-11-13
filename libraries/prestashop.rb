@@ -25,7 +25,7 @@ module PrestashopLibrary
 			recursive true
 		end
 
-		%w{config cache log img mails modules}.each do |dir|
+		%w{config cache log img mails modules translations upload download}.each do |dir|
 			directory "/var/www/#{username}/prestashop/#{dir}" do
 				owner "www-data"
 				group "www-data"
