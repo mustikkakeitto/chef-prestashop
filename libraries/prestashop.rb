@@ -18,9 +18,10 @@ module PrestashopLibrary
 		directory "/var/www/#{username}/prestashop" do
 			owner "www-data"
 			group "www-data"
+			action :create
 			recursive true
 		end
-		
+
 		execute "unzip -o /tmp/prestashop152.zip -d #{node.set['prestashop']['web_folder']}/#{username}" do
 			not_if "test -f /var/www/#{username}/prestashop/index.php"
 		end
