@@ -33,6 +33,18 @@ module PrestashopLibrary
 			end
 		end
 
+		template "/var/www/#{username}/prestashop/config/settings.inc.php" do
+			source "settings.inc.php"
+			owner "www-data"
+			group "www-data"
+			mode "0600"
+			variables({
+				:username => "#{username}"
+			})
+			action :create
+			not_if "test -f /var/www/#{username}/prestashop/config/settings.inc.php"
+		end
+
 	end
 
 	def prestashop_createDatabase(username)
