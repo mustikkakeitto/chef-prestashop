@@ -1,5 +1,5 @@
-maintainer       "YOUR_COMPANY_NAME"
-maintainer_email "YOUR_EMAIL"
+maintainer       "Unity Web "
+maintainer_email "info@unity-web.ch"
 license          "All rights reserved"
 description      "Installs/Configures prestashop"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))

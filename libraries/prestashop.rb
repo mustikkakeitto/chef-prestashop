@@ -15,7 +15,8 @@ module PrestashopLibrary
 
 	def prestashop_deploy(username) 
 		execute "unzip -o /tmp/prestashop152.zip -d #{node.set['prestashop']['web_folder']}/#{username}" do
-		not_if "test -f /var/www/#{username}/prestashop/index.php"
+			not_if "test -f /var/www/#{username}/prestashop/index.php"
+		end
 	end
 
 end
