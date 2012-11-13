@@ -17,6 +17,12 @@ module PrestashopLibrary
 		execute "unzip -o /tmp/prestashop152.zip -d #{node.set['prestashop']['web_folder']}/#{username}" do
 			not_if "test -f /var/www/#{username}/prestashop/index.php"
 		end
+		
+		directory "/var/www/#{username}" do
+			owner www-data
+			group www-data
+		end
+
 	end
 
 end
