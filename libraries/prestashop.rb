@@ -40,7 +40,7 @@ module PrestashopLibrary
 		sql_path = '/tmp/prestashop_create_tables.sql'
 
 		template sql_path do
-			source "mysql/prestashop152.sql.erb"
+			source "prestashop152.sql.erb"
 			owner "root"
 			group node['mysql']['root_group']
 			mode "0600"
