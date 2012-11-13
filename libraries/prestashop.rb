@@ -45,7 +45,7 @@ module PrestashopLibrary
 			group node['mysql']['root_group']
 			mode "0600"
 			variables(
-				:username => #{username}
+				:username => "#{username}"
 			)
 			action :create
 		end
