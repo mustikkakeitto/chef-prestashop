@@ -13,7 +13,7 @@ module PrestashopLibrary
 	    end
 	end
 
-	def prestashop_deploysite(username) 
+	def prestashop_deploySite(username) 
 
 		execute "unzip -o /tmp/prestashop152.zip -d #{node.set['prestashop']['web_folder']}/#{username}" do
 			not_if "test -f /var/www/#{username}/prestashop/index.php"
@@ -32,6 +32,34 @@ module PrestashopLibrary
 				recursive true
 			end
 		end
+
+	end
+
+	def prestashop_deployDatabase (username)
+	
+		sql_path = '/tmp/prestashop_create_tables.sql'
+
+		template sql_path do
+			source "mysql/prestashop152.sql.erb"
+			owner "root"
+			group node['mysql']['root_group']
+			mode "0600"
+			variables(
+    			:username => #{username}
+
+  			)
+			action :create
+		end
+
+		execute "prestashop-create-tables" do
+  			command "\"#{node['mysql']['mysql_bin']}\" -u root #{node['mysql']['server_root_password'].empty? ? '' : '-p' }\"#{node['mysql']['server_root_password']}\" < \"#{sql_path}\""
+		end
+
+		file sql_path do
+  			action :nothing
+  			only_if { File.exists?(sql_path) }
+		end
+
 	end
 
 end

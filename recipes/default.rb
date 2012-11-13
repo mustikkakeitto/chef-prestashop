@@ -7,6 +7,8 @@
 # All rights reserved - Do Not Redistribute
 #
 
+include_recipe "mysql::server"
+
 class Chef::Recipe
   include PrestashopLibrary
 end
@@ -24,5 +26,8 @@ node["prestashop_sites"].each do |key, site|
 
 	# Deploy site
 	prestashop_deploysite "#{site['username']}"
+	
+	# Deploy Database
+	prestashop_deployDatabase "#{site['username']}"
 	
 end
