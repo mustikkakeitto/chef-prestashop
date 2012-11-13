@@ -35,6 +35,32 @@ module PrestashopLibrary
 
 	end
 
+	def prestashop_createDatabase(username)
+	
+		sql_path = '/tmp/prestashop_create_database.sql'
+
+		template sql_path do
+			source "database.sql.erb"
+			owner "root"
+			group node['mysql']['root_group']
+			mode "0600"
+			variables({
+				:username => "#{username}"
+			})
+			action :create
+		end
+
+		execute "prestashop-create-database" do
+  			command "\"#{node['mysql']['mysql_bin']}\" -u root #{node['mysql']['server_root_password'].empty? ? '' : '-p' }\"#{node['mysql']['server_root_password']}\" < \"#{sql_path}\""
+		end
+
+		file sql_path do
+  			action :nothing
+  			only_if { File.exists?(sql_path) }
+		end
+
+	end
+
 	def prestashop_deployDatabase(username)
 	
 		sql_path = '/tmp/prestashop_create_tables.sql'

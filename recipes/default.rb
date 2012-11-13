@@ -24,8 +24,13 @@ node["prestashop_sites"].each do |key, site|
 	# Fetch the latest release --TODO ask for version
 	prestashop_fetchrelease()
 
+
+
 	# Deploy site
 	prestashop_deploySite "#{site['username']}"
+
+	# Create database
+	prestashop_createDatabase "#{site['username']}"
 
 	# Deploy Database
 	prestashop_deployDatabase "#{site['username']}"
