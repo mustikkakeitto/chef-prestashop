@@ -15,15 +15,17 @@ module PrestashopLibrary
 
 	def prestashop_deploySite(username) 
 
-		execute "unzip -o /tmp/prestashop152.zip -d #{node.set['prestashop']['web_folder']}/#{username}" do
-			not_if "test -f /var/www/#{username}/prestashop/index.php"
-		end
-
 		directory "/var/www/#{username}/prestashop" do
 			owner "www-data"
 			group "www-data"
 			recursive true
 		end
+		
+		execute "unzip -o /tmp/prestashop152.zip -d #{node.set['prestashop']['web_folder']}/#{username}" do
+			not_if "test -f /var/www/#{username}/prestashop/index.php"
+		end
+
+		
 
 		%w{config cache log img mails modules translations upload download}.each do |dir|
 			directory "/var/www/#{username}/prestashop/#{dir}" do
