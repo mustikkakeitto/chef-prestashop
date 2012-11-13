@@ -15,7 +15,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-CREATE DATABASE IF NOT EXISTS <%= username %>
+CREATE DATABASE IF NOT EXISTS <%= @username %>
 
 --
 -- Table structure for table `access`
@@ -5457,7 +5457,7 @@ CREATE TABLE `shop_url` (
 
 LOCK TABLES `shop_url` WRITE;
 /*!40000 ALTER TABLE `shop_url` DISABLE KEYS */;
-INSERT INTO `shop_url` VALUES (1,1,'62.50.76.143','62.50.76.143','/<%= username %>/prestashop/','',1,1);
+INSERT INTO `shop_url` VALUES (1,1,'62.50.76.143','62.50.76.143','/<%= @username %>/prestashop/','',1,1);
 /*!40000 ALTER TABLE `shop_url` ENABLE KEYS */;
 UNLOCK TABLES;
 
