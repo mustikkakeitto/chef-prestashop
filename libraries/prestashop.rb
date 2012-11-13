@@ -35,7 +35,7 @@ module PrestashopLibrary
 
 	end
 
-	def prestashop_deployDatabase (username)
+	def prestashop_deployDatabase(username)
 	
 		sql_path = '/tmp/prestashop_create_tables.sql'
 
