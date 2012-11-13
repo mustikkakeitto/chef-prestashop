@@ -19,11 +19,10 @@ node["prestashop_sites"].each do |key, site|
 	# Create User Account on System
 	prestashop_createuser "#{site['username']}", "#{site['password']}"
 	
-	# Fetch the latest release
-	# --TODO ask for version
-	prestashop_fetchrelease ()
+	# Fetch the latest release --TODO ask for version
+	prestashop_fetchrelease()
 
-	# prestashop_deploysite "#{site['username']}"
+	# Deploy site
+	prestashop_deploysite "#{site['username']}"
 	
-
 end
